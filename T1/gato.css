@@ -1,0 +1,169 @@
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #0a6fc2; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    padding: 16px 16px 8px 12px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #b8b8b8;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    font-size: 36px;
+    margin-left: 40px;
+  }
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    /*padding: 20px;*/
+  }
+  
+  .content{ /* Alinhar automaticamente a imagem*/
+    width:100%; 
+    height:auto;
+    margin:auto;
+    margin-left:100px;
+    margin-right:100px;
+  }
+
+  .auto-align{
+    margin:auto; 
+    display:block; 
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+  #content{
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+.topbar a:hover {
+  color: #b8b8b8;
+}
+
+.gato{
+  font-weight: bold;
+}
+
+.latim{
+  font-style: italic;
+}
+
+div p{
+  text-indent:10px;
+}
+
+.capitulo{
+  color: gray;
+}
+
+ul{
+  list-style:none;
+}
+
+ul li::before{ /* o before serve para ele meter só a bolinha colorida */
+  content:"▶";;
+  color:#2196F3;
+  font-weight: bold; 
+  font-size: x-large;
+  display: inline-block; 
+  width: 1em; 
+  margin-left: -1em; 
+}
+
+.border{
+  text-shadow: -1px -1px 0px #000,
+  0px -1px 0px #000,
+  1px -1px 0px #000,
+ -1px  0px 0px #000,
+  1px  0px 0px #000,
+ -1px  1px 0px #000,
+  0px  1px 0px #000, /* bordas */
+  1px  1px 0px #000;
+}
+
+.bitem{
+  font-size: x-large;
+  color:  #33ccff;
+}
+
+table{
+  min-width: 50%;
+  margin:auto;
+}
+
+table tr:nth-child(even) {
+  background-color: #ccf2ff;
+  text-align: center;
+  padding-left: 10px;
+}
+table tr:nth-child(odd) {
+  background-color: #fff;
+  text-align: center;
+}
+table th {
+  color: white;
+  background-color: #2196F3;
+  text-align: center;
+}
+
+l{
+  list-style:none;
+}
+
+l li::before{
+  content:"-";
+  color:#2196F3;
+  font-size:large;
+  display: inline-block; 
+  margin-left:30px;
+}
+
+.bitem2{
+  color:  black;
+}

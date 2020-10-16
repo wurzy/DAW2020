@@ -1,24 +1,173 @@
 <!DOCTYPE html>
-<html> <!-- encapsulate head and body in html tag -->
+<html> 
     <head>
-        <title>My First HTML Page</title>
+        <title>T1 - "Gato"</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"> <!-- Utilizar isto para funcionar bem em mobile -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="gato.css">  <!-- ou usar o link -->
+        <!-- https://static-cdn.jtvnw.net/jtv_user_pictures/27fdad08-a2c2-4e0b-8983-448c39519643-profile_image-300x300.png-->
     </head>
     
     <body>
-        <h1>A header</h1>
-        <p>A paragraph, followed by a <a href="http://www.google.com">link.</a></p>
+        <!-- Aqui refere-se ao conteúdo da topbar -->
+        <div class="w3-bar w3-blue" >
+            <div id="main" class="w3-bar-item w3-button w3-mobile w3-hover-cyan w3-hover-text-dark-gray" onclick="openNav()">&#9776;</div> <!-- o &#9776 significa caratér reservado (&#) 9776, simbolo com três linhas.-->
+            <a class="w3-bar-item w3-button w3-mobile w3-right w3-hover-cyan w3-hover-text-dark-gray" href="form2.html">Entrar</a>
+            <a class="w3-bar-item w3-button w3-mobile w3-right w3-hover-cyan w3-hover-text-dark-gray" href="form.html">Registar</a>
+            <div class="w3-bar-item w3-button w3-mobile w3-right w3-hover-cyan w3-hover-text-dark-gray">Contactos</div>
+            <div class="w3-bar-item w3-button w3-mobile w3-right w3-hover-cyan w3-hover-text-dark-gray">Sobre</div>
+            <a href="index.html" class="w3-bar-item w3-button w3-mobile w3-right w3-hover-cyan w3-hover-text-dark-gray">Início</a>
+        </div>
 
-        <ul> <!-- unordered list, useful for defining type of list -->
-            <li> A list Item </li>
-            <li> Another <a href="http://www.google.com">list Item</a> </li>
-        </ul>
+        <!-- Aqui refere-se ao conteúdo da sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> <!-- &times é o simbolo X -->
+            <a href="#taxonomia">Taxonomia</a>
+            <a href="#caracteristiscas">Características</a>
+            <a href="#dieta">Dieta</a>
+            <a href="#comunicacao">Comunicação</a>
+            <a href="#especies">Espécies</a>
+        </div>
 
-        <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Hello_Web_Series_%28Wordmark%29_Logo.png" width="200px"/> <!-- doesnt use the closing tag </img> because its defined by its attributes. -->
+        <!-- Aqui refere-se ao conteúdo do tema "gato" -->
+        <div id="content">
+            <img src="https://thumbs.web.sapo.io/?W=800&H=0&delay_optim=1&epic=ODY4pDYNK0J0s7LWpkB0lR+DUrRKUYptHWE9Kb7InIXLGf3QixWsjOfU7sIp42xesKaKgKuk+kPJIoFaRYyQGYCOVezq7f99FsUfxGvPreAlDz8=" style="min-width:50%; max-width:50%; width:50%; height:auto;" class="auto-align"/>
+            <h1 class="w3-container w3-pale-blue w3-leftbar w3-border-blue" id="taxonomia">Taxonomia</h1> 
+            <p>O <span class="gato">gato</span> <span class="latim">(Felis silvestris catus)</span>, também conhecido como gato caseiro, gato urbano ou gato doméstico, é um mamífero carnívoro da família dos felídeos,muito popular como animal de estimação. Ocupando o topo da cadeia alimentar,é predador natural de diversos animais, como roedores, pássaros, lagartixas ealguns insetos. Segundo pesquisas realizadas por instituições norte-americanas, os gatos consistem no segundo animal de estimação mais popular do mundo, estando atrás apenas dos peixes de aquário. Dados censitários apontam que nos Estados Unidos existem mais gatos domésticos doque cachorros.</p>
 
-        <form><!-- define elements for the form. -->
-            <input type="text" name="username"/><!-- give name for further use -->
-            <input type="password" name="password"/><!-- give name for further use -->
-            <button type="submit">Send</button><!-- Applying a submit button for the form -->
-        </form>
+            <p>A primeira associação com os humanos da qual se tem notícia ocorreu há cercade 9 500 anos, período superior ao estimado anteriormente, que oscilavaentre 3 500 e 8 000 anos. A subfamília Felinae, que agrupa os gatos domésticos, surgiu há cerca de 12 milhões de anos, expandindo-se a partir da África subsariana até alcançar as terras do atual Egito. Acredita-se que o gato-selvagem-africano <span class="latim">(Felis silvestris lybica)</span> era seu antepassado imediato e evidencias genéticas assinalam que os gatos domésticos atuais partilham uma procedência direta com os gatos selvagens do Oriente Médio.</p>
+
+            <p>Existem cerca de 250 raças de gato doméstico, cujo peso variável entre 2,5 a 12 kg classifica a espécie como animal doméstico de pequeno a médio porte. Assim como ocorre com as raças de cães que apresentam esta mesma faixa de peso, o gato doméstico pode viver entre quinze e vinte anos. Devido à sua personalidade independente, tornou-se um animal de companhia em diversos lares ao redor do mundo, agradando pessoas dos mais variados estilos de vida.</p>
+
+            <p>Para mais informações clicar <a href="https://pt.wikipedia.org/wiki/Gato">aqui</a>.</p>
+
+            <h1 class="w3-container w3-pale-blue w3-leftbar w3-border-blue" id="caracteristiscas">Características</h1> 
+
+            <ul>
+                <li><span class="bitem">Peso</span></li>
+                <p>Os gatos geralmente pesam entre 2,5 e 7 kg; entretanto, exemplares de algumas raças, como o <span class="latim">Maine Coon</span>, podem exceder os 12 kg. Já foram até mesmo registrados exemplares com peso superior a 20 kg, aspecto que normalmente ocorre devido ao excesso de alimentação.</p>
+                <li><span class="bitem">Tempo de vida</span></li>
+                <p>Em cativeiro, os gatos vivem tipicamente de 15 a 20 anos, porém o exemplar mais velho já registrado viveu até a idade de 38 anos. Os gatos domésticos têm a expectativa de vida aumentada quando não saem pelas ruas, pois isso reduz o risco de ferimentos ocasionados por brigas e acidentes.</p>
+                <li><span class="bitem">Audição</span></li>
+                <p>Os gatos possuem trinta e dois músculos na orelha, o que lhes permite ter um tipo de audição direcional, movendo cada orelha independentemente da outra. Assim, um gato pode mover o corpo numa direção, enquanto move as orelhas para outro lado. A maioria dos gatos possui pavilhões auditivos orientados para cima. Diferentemente dos cães, gatos com orelhas dobradiças são extremamente raros. Os <span class="latim">Scottish Folds</span> são uma das exceções a essa regra, devido a uma série de mutações genéticas. Quando irritados ou assustados, os gatos repuxam os músculos das orelhas, o que faz com que elas se inclinem para trás.</p>
+                <li><span class="bitem">Temperatura</span></li>
+                <p>A temperatura normal do corpo desses animais varia entre 38 e 39 °C. O animal é considerado febril quando tem a temperatura superior a 39,5 °C, e hipotérmico quando está abaixo de 37,5 °C. Comparativamente, os seres humanos têm temperatura normal em torno de 37 °C. A pulsação do coração desses pequenos mamíferos vai de 140 a 220 batidas por minuto e depende muito do estado de excitação do animal. Em repouso, a média da frequência cardíaca fica entre 150 e 180 bpm.</p>
+                <li><span class="bitem">Mobilidade</span></li>
+                <p>Assim como a maioria das espécies de mamíferos, os gatos são capazes de nadar. No entanto, somente o fazem quando extremamente necessário, como em caso de queda acidental na água. Assim como os cães, os gatos são digitígrados: andam diretamente sobre os dedos; os ossos das suas patas compõem a parte mais baixa da porção visível das pernas. São capazes de passos precisos, colocando cada pata directamente sobre a pegada deixada pela anterior, minimizando o ruído e os trilhos visíveis</p>
+                <li><span class="bitem">Pêlo</span></li>
+                <p>Em respeito às cores, os gatos podem ter uma única coloração, como os completamente brancos ou pretos, que só tem pelos contrastantes soltos em algumas partes do corpo. Também podem ter duas cores, como o branco e preto, branco e amarelo, pardo e branco, ou cinza e branco. Podem possuir um padrão de cores tigrado em laranja, pardo e branco; em tons cinza e alaranjados (gatos romanos), com o pelo de uma só cor em toda a sua extensão ou de dois tipos de cores (as extremidades diferentes do resto do corpo). Também podem ter um padrão de cor siamês com cores mais escuras na face, rabo, patas e orelhas. Outro tipo de coloração é a tricolor, como, por exemplo, branco, laranja e preto. As gatas costumam ter os pelos mais lustrosos e brilhantes do que os machos, em contra partida elas costumam soltar mais pelos do que os gatos, principalmente nos períodos do início do cio. Os gatos tricolores ou de até quatro cores são normalmente fêmeas; quando são machos, são estéreis. Em contrapartida, os gatos romanos laranjas são em sua maioria machos, porém é possível deparar-se com fêmeas. O tipo de pelo vai desde o muito curto (como o <span class="latim">Sphynx</span>, cujo pelo é quase invisível), o encaracolado (no caso do <span class="latim">Devon rex</span>), o pelo curto normal com uma cor somente ou com pontas de outras cor, o pelo semi-longo, até o pelo mais longo procedentes das cruzas com o <span class="latim">Bosque da Noruega</span>, persa ou qualquer outra raça de pelo longo.</p>
+            </ul>
+            <h1 class="w3-container w3-pale-blue w3-leftbar w3-border-blue" id="dieta">Dieta</h1> 
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" align="right" style="padding:5px"/>
+            <p>Em situações de caça, os gatos alimentam-se de insetos, pequenas aves e roedores. Os gatos não-domesticados, abandonados e sem dono, ou gatos domesticados que se alimentem livremente, consomem entre 8 a 16 refeições por dia. Apesar disso, os animais adultos podem adaptar-se a apenas uma refeição por dia. Os gatos não produzem a sua própria taurina, que consiste em um ácido orgânico essencial para a vida dos mamíferos. Como essa substância está presente no tecido muscular dos animais, o gato precisa se alimentar de carne para sobreviver. Assim, os gatos apresentam dentição e aparelho digestivo especializado para processamento de carne. O intestino diminuiu de extensão ao longo da evolução para ficar apenas com os segmentos que melhor processam as proteínas e gorduras de origem animal.</p>
+            <img src="https://www.catster.com/wp-content/uploads/2017/11/A-brown-tabby-cat-eating-a-bowl-of-dry-food.jpg" align="left" style="padding:10px; height:220px"/>
+            <p>Apesar da fisiologia do gato ser essencialmente orientada para o consumo de carne, é comum que os gatos complementem a sua dieta carnívora com a ingestão de pequenas quantidades de ervas, folhas, plantas domésticas ou outros elementos de origem vegetal. Uma teoria sugere que este comportamento ajuda os gatos a regurgitar em caso de difícil digestão; outra teoria aponta que ingerir pequenas doses de vegetais fornece fibras e minerais diversos, não presentes em uma dieta exclusivamente carnívora. Neste contexto, é necessária prudência aos donos dos gatos porque algumas plantas podem ser venenosas para os animais. As folhas de algumas espécies de lírios podem causar dano nos rins, que pode mesmo ser fatal; também as plantas do género Philodendron são venenosas para os gatos. Outro exemplo é o do abacateiro, do qual algumas partes são tóxicas, mas cujo fruto (exceto o caroço) é um ingrediente em várias marcas de comida para gatos.</p>
+
+            <h1 class="w3-container w3-pale-blue w3-leftbar w3-border-blue" id="comunicacao">Comunicação</h1> 
+            <p> O miado é o som típico que caracteriza o gato. É transcrito onomatopeicamente como "miau" em português (em diversas outras línguas apresenta grafia semelhante, como "meow", "miaow", "maw", etc.) </p>
+            <audio controls class="auto-align">
+                <source src="https://upload.wikimedia.org/wikipedia/commons/3/31/Felis_silvestris_catus.ogg" type="audio/ogg">
+              </audio>
+             <p>
+               O miado é uma forma que os gatos criaram para comunicar com humanos. Em estado selvagem, gatos raramente miam, usando marcas odoríferas e arranhões para marcar território e avisar outros gatos de que estiveram ali. Diferentemente do ronronar, o miado possui um som mais agudo e audível a uma grande distância. A pronúncia desta chamada varia significativamente, dependendo de seu propósito. Usualmente, o gato vocaliza indicando sofrimento, solicitando atenção humana (por exemplo, para ser alimentado), ou como uma saudação. Alguns vocalizam excessivamente, enquanto que outros raramente miam. Dependendo da raça, são capazes de emitir cerca de 100 tipos de vocalizações diferentes, incluindo sons que se assemelham à linguagem humana. Os machos possuem vocalização mais forte e grave que as fêmeas e a espécie doméstica costuma miar muito mais do que a selvagem, já que é a principal forma que eles têm de chamar a atenção de seus donos.</p>
+
+            <h1 class="w3-container w3-pale-blue w3-leftbar w3-border-blue" id="especies">Espécies</h1> 
+            <p>Na tabela seguinte, encontram-se as característiscas das raças de gato mais populares.</p>
+            <table>
+                <tr>
+                  <th>Raça</th>
+                  <th>Tamanho</th>
+                  <th>Peso</th>
+                  <th>Pêlo</th>
+                  <th>Cor(es)</th>
+                </tr>
+                <tr>
+                  <td>Abissínio</td>
+                  <td>Pequeno-Médio</td>
+                  <td>3-5kg</td>
+                  <td>Médio</td>
+                  <td>Castanho, Ruivo</td>
+                </tr>
+                <tr>
+                  <td>Maine Coon</td>
+                  <td>Largo</td>
+                  <td>6-8kg</td>
+                  <td>Médio-Grande</td>
+                  <td>Castanho, Malhado</td>
+                </tr>
+                <tr>
+                  <td>Siamês</td>
+                  <td>Médio</td>
+                  <td>5-7kg</td>
+                  <td>Curto</td>
+                  <td>Branco</td>
+                </tr>
+                <tr>
+                  <td>Norueguês</td>
+                  <td>Largo</td>
+                  <td>6-9kg</td>
+                  <td>Longo</td>
+                  <td>Branco, Preto, Creme</td>
+                </tr>
+                <tr>
+                  <td>Devon Rex</td>
+                  <td>Pequeno-Médio</td>
+                  <td>4-6kg</td>
+                  <td>Curto</td>
+                  <td>Branco, Preto, Castanho</td>
+                </tr>  
+                <tr>
+                  <td>Sphynx</td>
+                  <td>Médio</td>
+                  <td>5-7kg</td>
+                  <td>Não Tem</td>
+                  <td>Branco, Preto, Cinzento</td>
+                </tr>    
+                <tr>
+                  <td>Ragdoll</td>
+                  <td>Médio</td>
+                  <td>5-8kg</td>
+                  <td>Médio-Longo</td>
+                  <td>Azul-Marinho, Branco, Creme</td>
+                </tr>  
+                <tr>
+                  <td>Siberiano</td>
+                  <td>Médio</td>
+                  <td>5-9kg</td>
+                  <td>Médio-Longo</td>
+                  <td>Branco, Malhado, Creme</td>
+                </tr>   
+                <tr>
+                  <td>Balinês</td>
+                  <td>Médio</td>
+                  <td>6-8kg</td>
+                  <td>Médio</td>
+                  <td>Preto, Branco, Castanho</td>
+                </tr>              
+              </table>
+              <p>Existem muitas outras espécies, tais como: </p>
+              <l class="latim">
+                  <li> Turkish Van</li>
+                  <li> Cornish Rex</li>
+                  <li> Somali</li>
+                  <li> Manês</li>
+                  <li> Ragamuffin</li>
+                  <li> etc.</li>
+              </l>
+        </div>
+
+        <script> /*Javascript para ajudar a table of contents a funcionar corretamente, basicamente move as margens dos menus consoante o clique.*/
+            function openNav() {
+              document.getElementById("mySidebar").style.width = "190px";
+              document.getElementById("main").style.marginLeft = "190px";
+              document.getElementById("content").style.marginLeft = "190px";
+            }
+            
+            function closeNav() {
+              document.getElementById("mySidebar").style.width = "0";
+              document.getElementById("main").style.marginLeft= "0";
+              document.getElementById("content").style.marginLeft = "0";
+            }
+        </script>
     </body>
 </html>
