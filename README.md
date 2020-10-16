@@ -3,7 +3,7 @@ Homework assignments for WebDev
 
 Weekly Homework Assignments for WebDev.</br>
 Table of contents: </br>
-T1:null </br>
+T1: HTML/CSS page with theme: "gato" </br>
 T2:null</br>
 T3:null</br>
 T4:null</br>
