@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="pr.css"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <cabecalho>
+        <nomechave>T2 - XML/DTD</nomechave>
+        <titulo>Criação de DTDs para documentos "Project Record"</titulo>
+        <subtitulo>Especificação estrutural para documentos do tipo "Project Record" para DAW (UC Opcional MiEI)</subtitulo>
+        <data_i>24 Outubro de 2020</data_i>
+        <data_f>25 Outubro de 2020</data_f>
+        <supervisor s_id="jcr" link="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </cabecalho>
+
+    <equipa>
+        <elemento n_aluno="a84464">
+            <nome>Válter Ferreira Picas Carvalho</nome>
+            <email link="mailto:a84464@alunos.uminho.pt">a84464@alunos.uminho.pt</email>
+            <site link="https://github.com/wurzy">github.com/wurzy</site>
+        </elemento>
+    </equipa>
+
+    <resumo>
+        <paragrafo>
+            O projeto elaborado foca-se em dois tipos distintos de documento, <negrito>XML</negrito> e <negrito>DTD</negrito>.
+        </paragrafo>
+        <paragrafo>
+            O ficheiro <negrito>DTD</negrito> (<italico>Document Type Definition</italico>) disponibilizado contém a estrutura dos documentos do tipo <italico>"Project Record"</italico>, que é o tipo de formatação utilizada para este mesmo relatório.
+        </paragrafo>
+        <paragrafo>
+            A partir desse ficheiro, foi gerado um ficheiro <negrito>XML</negrito> (<italico>Extensible Markup Language</italico>) que é completado com toda a informação do <italico>"Project Record"</italico> do <sublinhado>TPC 2</sublinhado>, no contexto da Unidade Curricular <negrito>DAW</negrito> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </paragrafo>
+        <paragrafo>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, em <link tipo="ext">https://github.com/wurzy/DAW2020/T2</link>, ou alternativamente na aba <link tipo="int">ficheiros</link>.
+        </paragrafo>
+    </resumo>
+
+    <ficheiros>
+        <ficheiro f_id="xml" link="https://github.com/wurzy/DAW2020/T2/pr.xml">"Project Record" do TPC 2 em XML</ficheiro>
+        <ficheiro f_id="dtd" link="https://github.com/wurzy/DAW2020/T2/pr.dtd">"Project Record" estruturado em DTD</ficheiro>
+    </ficheiros>
+</pr>

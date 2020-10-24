@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT pr (cabecalho,equipa,resumo,ficheiros)>
+
+<!ELEMENT cabecalho (nomechave,titulo,subtitulo?,data_i,data_f,supervisor)>
+<!ELEMENT nomechave (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT subtitulo (#PCDATA)>
+<!ELEMENT data_i (#PCDATA)>
+<!ELEMENT data_f (#PCDATA)>
+<!ELEMENT supervisor (#PCDATA)>
+
+<!ELEMENT equipa (elemento, elemento?, elemento?)>
+<!ELEMENT elemento (nome, email, site?)>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT site (#PCDATA)>
+
+<!ELEMENT resumo (paragrafo+)>
+<!ELEMENT paragrafo (#PCDATA|italico|negrito|sublinhado|link)*>
+<!ELEMENT italico (#PCDATA)>
+<!ELEMENT negrito (#PCDATA)>
+<!ELEMENT sublinhado (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
+
+<!ELEMENT ficheiros (ficheiro+)>
+<!ELEMENT ficheiro (#PCDATA)>
+
+<!ATTLIST supervisor
+        s_id ID #REQUIRED
+        link CDATA #IMPLIED>
+
+<!ATTLIST elemento
+        n_aluno ID #REQUIRED>
+
+<!ATTLIST email
+        link CDATA #IMPLIED>
+
+<!ATTLIST site
+        link CDATA #IMPLIED>
+
+<!ATTLIST ficheiro
+        f_id ID #REQUIRED
+        link CDATA #REQUIRED>
+
+<!ATTLIST link
+        tipo (int|ext) #REQUIRED>

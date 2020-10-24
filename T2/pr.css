@@ -1,0 +1,87 @@
+cabecalho{
+    display:block;
+    margin:40px;
+}
+
+nomechave{
+    display: block;
+    color:blue;
+    font-size: 20pt;
+}
+
+titulo{
+    display: block;
+    color: palevioletred;
+    font-size:16pt;
+}
+
+data_i, data_f{
+    display: block;
+    font-size:small;
+}
+
+supervisor{
+    display: block;
+    font-size:large;
+    float: right;
+}
+
+elementos{
+    margin:40px;
+}
+
+elemento{
+    padding: 10px;
+    margin: 10px;
+    display: block;
+    font-size:large;
+    font-style: italic;
+}
+
+email{
+    display:block;
+    margin: 10px;
+    font-style: normal;
+}
+
+site{
+    display:block;
+    margin: 10px;
+    font-style: normal;
+}
+
+resumo{
+    margin:10px;
+}
+
+paragrafo{
+    display:block;
+    margin:5px;
+    padding:5px;
+}
+
+ficheiros{
+    margin:10px;
+}
+
+ficheiro{
+    display:block;
+    margin:10px;
+    color:deepskyblue;
+}
+
+negrito{
+    font-weight: bold;
+}
+
+italico{
+    font-style: italic;
+}
+
+sublinhado{
+    text-decoration: underline;
+}
+
+link{
+    color:blue;
+}
