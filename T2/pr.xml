@@ -35,7 +35,6 @@
     </resumo>
 
     <ficheiros>
-        <ficheiro f_id="xml" link="https://github.com/wurzy/DAW2020/blob/main/T2/pr.xml">"Project Record" do TPC 2 em XML</ficheiro>
         <ficheiro f_id="dtd" link="https://github.com/wurzy/DAW2020/blob/main/T2/pr.dtd">"Project Record" estruturado em DTD</ficheiro>
     </ficheiros>
 </pr>

@@ -37,7 +37,7 @@
         link CDATA #IMPLIED>
 
 <!ATTLIST site
-        link CDATA #IMPLIED>
+        link CDATA #REQUIRED>
 
 <!ATTLIST ficheiro
         f_id ID #REQUIRED
