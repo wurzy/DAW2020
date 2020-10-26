@@ -30,7 +30,7 @@
             A partir desse ficheiro, foi gerado um ficheiro <negrito>XML</negrito> (<italico>Extensible Markup Language</italico>) que é completado com toda a informação do <italico>"Project Record"</italico> do <sublinhado>TPC 2</sublinhado>, no contexto da Unidade Curricular <negrito>DAW</negrito> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
         </paragrafo>
         <paragrafo>
-            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, em <link tipo="ext">https://github.com/wurzy/DAW2020/T2</link>, ou alternativamente na aba <link tipo="int">ficheiros</link>.
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, em <linkext>https://github.com/wurzy/DAW2020/T2</linkext>, ou alternativamente na aba onde se encontra o <linkint ref="dtd">documento DTD</linkint>.
         </paragrafo>
     </resumo>
 

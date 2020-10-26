@@ -17,11 +17,12 @@
 <!ELEMENT site (#PCDATA)>
 
 <!ELEMENT resumo (paragrafo+)>
-<!ELEMENT paragrafo (#PCDATA|italico|negrito|sublinhado|link)*>
+<!ELEMENT paragrafo (#PCDATA|italico|negrito|sublinhado|linkext|linkint)*>
 <!ELEMENT italico (#PCDATA)>
 <!ELEMENT negrito (#PCDATA)>
 <!ELEMENT sublinhado (#PCDATA)>
-<!ELEMENT link (#PCDATA)>
+<!ELEMENT linkext (#PCDATA)>
+<!ELEMENT linkint (#PCDATA)>
 
 <!ELEMENT ficheiros (ficheiro+)>
 <!ELEMENT ficheiro (#PCDATA)>
@@ -43,5 +44,5 @@
         f_id ID #REQUIRED
         link CDATA #REQUIRED>
 
-<!ATTLIST link
-        tipo (int|ext) #REQUIRED>
+<!ATTLIST linkint
+        ref IDREF #REQUIRED>
