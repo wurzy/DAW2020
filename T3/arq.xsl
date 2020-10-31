@@ -78,7 +78,7 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
                 <p><b>Autor: </b> <xsl:value-of select="AUTOR"/></p>
                 <p><b>Data: </b> <xsl:value-of select="DATA"/></p>
                 <address>
-                    [<a href="index.html#i{generate-id()}"> Voltar à Home</a>] <!-- volta para a home, especificamente para o índice desta página -->
+                    [<a href="index.html#i{generate-id()}">Início</a>] <!-- volta para a home, especificamente para o índice desta página -->
                 </address>
             </body>
         </xsl:result-document>
