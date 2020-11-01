@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="html" encoding="iso-8859-1" indent="yes"/>
     <xsl:template match="/">
-        <xsl:result-document href="site/index.html"> <!-- gera esta ficheiro e guarda o output lá -->
+        <xsl:result-document href="site/index.html"> 
             <html>
                 <head>
                     <title>Arqueossítios do NW Português</title>
@@ -11,11 +11,11 @@
                     <h2 class="w3-bar" style="color:#2196F3; text-align:center;">Arqueossítios do NW Português </h2>
                     <h3> &#8594; Índice de Arqueossítios</h3>
                     <ol>
-                        <xsl:apply-templates select="//ARQELEM" mode="indice"> 
+                        <xsl:apply-templates select="//ARQELEM" mode="indice">  <!-- Gerar o índice -->
                             <xsl:sort select="normalize-space(IDENTI)"
                                 lang="iso-8859-1"/> <!-- Alguns titulos vinham com espaço branco e estragavam o sort
                                                          e era preciso ordenar direito por causa dos acentos portugueses -->
-                        </xsl:apply-templates> <!-- Gerar o índice -->
+                        </xsl:apply-templates>
                     </ol>
                 </body>
             </html>
@@ -81,7 +81,7 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
                 </xsl:if>
                 <p><b><span style="color:#2196F3">Autor: </span> </b> <xsl:value-of select="AUTOR"/></p>
                 <p><b><span style="color:#2196F3">Data: </span>: </b> <xsl:value-of select="DATA"/></p>
-                <address> <!-- Botoes de proximo e anterior com condiçoes -->
+                <address> <!-- Botoes de proximo e anterior com condiçoes if -->
                     <xsl:if test="position() &gt; 1">
                         [<a href="{position()-1}.html">Anterior</a>] 
                     </xsl:if>
@@ -94,6 +94,7 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
         </xsl:result-document>
     </xsl:template>
     
+    <!-- Aplicar o template LIGA dentro dos nodos -->
     <xsl:template match="BIBLIO">
         <li><xsl:apply-templates/></li>
     </xsl:template>
