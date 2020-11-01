@@ -8,7 +8,7 @@
                     <title>Arqueossítios do NW Português</title>
                 </head>
                 <body>
-                    <h2 style="color:#2196F3; text-align:center;">Arqueossítios do NW Português </h2>
+                    <h2 class="w3-bar" style="color:#2196F3; text-align:center;">Arqueossítios do NW Português </h2>
                     <h3> &#8594; Índice de Arqueossítios</h3>
                     <ol>
                         <xsl:apply-templates select="//ARQELEM" mode="indice"> 
@@ -20,25 +20,29 @@
                 </body>
             </html>
         </xsl:result-document>
-        <xsl:apply-templates/> <!-- Gerar os registos de arq em páginas separadas -->
+         <xsl:apply-templates select="//ARQELEM"> 
+                <xsl:sort select="normalize-space(IDENTI)"
+                    lang="iso-8859-1"/> <!-- era preciso ordenar da mesma forma que os indices para bater certo -->
+        </xsl:apply-templates> 
     </xsl:template>
     
     <!-- Templates de índice ............................................ -->
     
-    <xsl:template match="ARQELEM" mode="indice"> <!-- ou tit aqui e . na linha abaixo -->
-        <li>
-            <a name="i{generate-id()}"/>
-            <a href="{generate-id()}.html"> <!-- salta para o ficheiro na diretoria atual com este id no nome -->
-                <xsl:value-of select="IDENTI"/>
-            </a>
-        </li>
+    <xsl:template match="ARQELEM" mode="indice"> 
+            <li>
+                <a name="i{position()}"/>
+                <a href="{position()}.html"> 
+                    <xsl:value-of select="IDENTI"/>
+                </a>
+            </li>
+
     </xsl:template>
     
     
     <!-- Templates de conteúdo ............................................ -->
 
     <xsl:template match="ARQELEM">
-        <xsl:result-document href="site/{generate-id()}.html">
+        <xsl:result-document href="site/{position()}.html">
             <html>
                 <head>
                     <title><xsl:value-of select="IDENTI"/></title>
@@ -77,8 +81,14 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
                 </xsl:if>
                 <p><b><span style="color:#2196F3">Autor: </span> </b> <xsl:value-of select="AUTOR"/></p>
                 <p><b><span style="color:#2196F3">Data: </span>: </b> <xsl:value-of select="DATA"/></p>
-                <address>
-                    [<a href="index.html#i{generate-id()}">Início</a>] <!-- volta para a home, especificamente para o índice desta página -->
+                <address> <!-- Botoes de proximo e anterior com condiçoes -->
+                    <xsl:if test="position() &gt; 1">
+                        [<a href="{position()-1}.html">Anterior</a>] 
+                    </xsl:if>
+                    <xsl:if test="position() &lt; last()">
+                        [<a href="{position()+1}.html">Próximo</a>]
+                    </xsl:if>
+                    <p>[<a href="index.html#i{position()}">Início</a>]</p>
                 </address>
             </body>
         </xsl:result-document>
