@@ -20,27 +20,27 @@
                 </body>
             </html>
         </xsl:result-document>
-         <xsl:apply-templates select="//ARQELEM"> 
-                <xsl:sort select="normalize-space(IDENTI)"
-                    lang="iso-8859-1"/> <!-- era preciso ordenar da mesma forma que os indices para bater certo -->
+        <xsl:apply-templates select="//ARQELEM"> 
+            <xsl:sort select="normalize-space(IDENTI)"
+                lang="iso-8859-1"/> <!-- era preciso ordenar da mesma forma que os indices para bater certo -->
         </xsl:apply-templates> 
     </xsl:template>
     
     <!-- Templates de índice ............................................ -->
     
     <xsl:template match="ARQELEM" mode="indice"> 
-            <li>
-                <a name="i{position()}"/>
-                <a href="{position()}.html"> 
-                    <xsl:value-of select="IDENTI"/>
-                </a>
-            </li>
-
+        <li>
+            <a name="i{position()}"/>
+            <a href="{position()}.html"> 
+                <xsl:value-of select="IDENTI"/>
+            </a>
+        </li>
+        
     </xsl:template>
     
     
     <!-- Templates de conteúdo ............................................ -->
-
+    
     <xsl:template match="ARQELEM">
         <xsl:result-document href="site/{position()}.html">
             <html>
@@ -59,14 +59,14 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
                 <p><b><span style="color:#2196F3">Descrição: </span> </b> <xsl:apply-templates select="DESCRI"/></p>
                 <xsl:if test="CRONO"><p><b><span style="color:#2196F3">Era Cronológica: </span> </b> <xsl:value-of select="CRONO"/></p></xsl:if>
                 <p><b><span style="color:#2196F3">Lugar: </span> </b> <xsl:apply-templates select="LUGAR"/></p>
-                <p><b><span style="color:#2196F3">Freguesia: </span>: </b> <xsl:apply-templates select="FREGUE"/></p>
-                <p><b><span style="color:#2196F3">Concelho: </span>: </b> <xsl:value-of select="CONCEL"/></p>
-                <xsl:if test="CODADM"><p><b><span style="color:#2196F3">Código Administrativo: </span>: </b> <xsl:value-of select="CODADM"/></p></xsl:if>
+                <p><b><span style="color:#2196F3">Freguesia: </span> </b> <xsl:apply-templates select="FREGUE"/></p>
+                <p><b><span style="color:#2196F3">Concelho: </span> </b> <xsl:value-of select="CONCEL"/></p>
+                <xsl:if test="CODADM"><p><b><span style="color:#2196F3">Código Administrativo: </span> </b> <xsl:value-of select="CODADM"/></p></xsl:if>
                 <xsl:if test="LATITU"><p><b><span style="color:#2196F3">Latitude: </span> </b> <xsl:value-of select="LATITU"/></p></xsl:if>
-                <xsl:if test="LONGIT"><p><b><span style="color:#2196F3">Longitude: </span>: </b> <xsl:value-of select="LONGIT"/></p></xsl:if>
-                <xsl:if test="ALTITU"><p><b><span style="color:#2196F3">Altitude: </span>: </b> <xsl:value-of select="ALTITU"/></p></xsl:if>
-                <xsl:if test="ACESSO"><p><b><span style="color:#2196F3">Acesso: </span>: </b> <xsl:apply-templates select="ACESSO"/></p></xsl:if>
-                <xsl:if test="QUADRO"><p><b><span style="color:#2196F3">Quadro: </span>: </b> <xsl:apply-templates select="QUADRO"/></p></xsl:if>
+                <xsl:if test="LONGIT"><p><b><span style="color:#2196F3">Longitude: </span> </b> <xsl:value-of select="LONGIT"/></p></xsl:if>
+                <xsl:if test="ALTITU"><p><b><span style="color:#2196F3">Altitude: </span> </b> <xsl:value-of select="ALTITU"/></p></xsl:if>
+                <xsl:if test="ACESSO"><p><b><span style="color:#2196F3">Acesso: </span> </b> <xsl:apply-templates select="ACESSO"/></p></xsl:if>
+                <xsl:if test="QUADRO"><p><b><span style="color:#2196F3">Quadro: </span> </b> <xsl:apply-templates select="QUADRO"/></p></xsl:if>
                 <xsl:if test="TRAARQ"><p><b><span style="color:#2196F3">Trabalho(s) Arqueológicos: </span> </b> <xsl:apply-templates select="TRAARQ"/></p></xsl:if>
                 <p><b><span style="color:#2196F3">Descrição Arqueológica: </span> </b> <xsl:apply-templates select="DESARQ"/></p>
                 <xsl:if test="INTERP"><p><b><span style="color:#2196F3">Interpretação Arqueológica: </span> </b> <xsl:apply-templates select="INTERP"/></p></xsl:if>
@@ -80,7 +80,7 @@ INTERE?,BIBLIO*,AUTOR,TRAARQ?,DATA)> -->
                     </ul>
                 </xsl:if>
                 <p><b><span style="color:#2196F3">Autor: </span> </b> <xsl:value-of select="AUTOR"/></p>
-                <p><b><span style="color:#2196F3">Data: </span>: </b> <xsl:value-of select="DATA"/></p>
+                <p><b><span style="color:#2196F3">Data: </span> </b> <xsl:value-of select="DATA"/></p>
                 <address> <!-- Botoes de proximo e anterior com condiçoes if -->
                     <xsl:if test="position() &gt; 1">
                         [<a href="{position()-1}.html">Anterior</a>] 
