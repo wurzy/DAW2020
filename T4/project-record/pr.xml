@@ -17,15 +17,20 @@
         </member>
     </team>
     <abstract>
-        <p>De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que envia ficheiros <i>HTML</i> de <u>arqueossítios portugueses</u>, retirados do arquivo de ficheiros <i>XML</i> do supervisor.
+        <p>
+            De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que envia ficheiros <i>HTML</i> de <u>arqueossítios portugueses</u>, retirados do arquivo de ficheiros <i>XML</i> do supervisor.
         </p>
-        <p>O servidor, localizado no seguinte <link url="http://localhost:7777">link</link>, apresenta ao utilizador um índice com todos os arqueossítios disponíveis e em cada um dos seus elementos está disponível um <i>link</i>. Através do clique do utilizador nos elementos, é realizado um novo pedido ao servidor <i>Node.js</i> com o formato <b>/arqs/{N}</b>, em que <b>N</b> é o identificador do arqueossítio, e é recebido pelo utilizador um ficheiro <i>HTML</i> com toda a informação arquivada desse arqueossítio.
+        <p>
+            O servidor, localizado no seguinte <link url="http://localhost:7777">link</link>, apresenta ao utilizador um índice com todos os arqueossítios disponíveis e em cada um dos seus elementos está disponível um <i>link</i>. Através do clique do utilizador nos elementos, é realizado um novo pedido ao servidor <i>Node.js</i> com o formato <b>/arqs/{N}</b>, em que <b>N</b> é o identificador do arqueossítio, e é recebido pelo utilizador um ficheiro <i>HTML</i> com toda a informação arquivada desse arqueossítio.
         </p>
-        <p>Dentro dos ficheiros <i>HTML</i> dos arqueossítios, é possível voltar ao índice e, caso possível, obter o próximo registo ou voltar ao registo anterior, através de pedidos ao servidor do mesmo formato presente no parágrafo anterior ou <b>/home#i{N}</b>, onde <b>N</b> indica a posição no índice quando volta para o mesmo. 
+        <p>
+            Dentro dos ficheiros <i>HTML</i> dos arqueossítios, é possível voltar ao índice e, caso possível, obter o próximo registo ou voltar ao registo anterior, através de pedidos ao servidor do mesmo formato presente no parágrafo anterior ou <b>/home#i{N}</b>, onde <b>N</b> indica a posição no índice quando volta para o mesmo. 
         </p>
-        <p>Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        <p>
+            Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
         </p>
-        <p>Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/T4">GitHub</link>.
+        <p>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/T4">GitHub</link>.
         </p>
     </abstract>
     <deliverables>
