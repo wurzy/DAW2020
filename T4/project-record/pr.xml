@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <meta>
+        <key>T4 - Node.js</key>
+        <title>T4 - Servidor Node.js para o arquivo de arqueossítios do NW Português</title>
+        <subtitle>Envio de ficheiros HTML através de pedidos ao servidor de Node.js</subtitle>
+        <bdate>05-Nov-2020</bdate>
+        <edate>06-Nov-2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="a84464">
+            <name>Válter Ferreira Picas Carvalho</name>
+            <email>a84464@alunos.uminho.pt</email>
+            <url>https://github.com/wurzy</url>
+        </member>
+    </team>
+    <abstract>
+        <p>De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que envia ficheiros <i>HTML</i> de <u>arqueossítios portugueses</u>, retirados do arquivo de ficheiros <i>XML</i> do supervisor.
+        </p>
+        <p>O servidor, localizado no seguinte <link url="http://localhost:7777">link</link>, apresenta ao utilizador um índice com todos os arqueossítios disponíveis e em cada um dos seus elementos está disponível um <i>link</i>. Através do clique do utilizador nos elementos, é realizado um novo pedido ao servidor <i>Node.js</i> com o formato <b>/arqs/{N}</b>, em que <b>N</b> é o identificador do arqueossítio, e é recebido pelo utilizador um ficheiro <i>HTML</i> com toda a informação arquivada desse arqueossítio.
+        </p>
+        <p>Dentro dos ficheiros <i>HTML</i> dos arqueossítios, é possível voltar ao índice e, caso possível, obter o próximo registo ou voltar ao registo anterior, através de pedidos ao servidor do mesmo formato presente no parágrafo anterior ou <b>/home#i{N}</b>, onde <b>N</b> indica a posição no índice quando volta para o mesmo. 
+        </p>
+        <p>Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </p>
+        <p>Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/T4">GitHub</link>.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T4">Código fonte do servidor Node.js</link>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T4/site">Ficheiros HTML utilizados pelo servidor</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.xsl">XSLT utilizado para gerar os ficheiros HTML</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.dtd">DTD do arquivo de Arqueossítios do NW Português</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.xml">XML do arquivo de Arqueossítios do NW Português</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/project-record/pr.dtd">DTD do 'Project Record'</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/project-record/pr.xml">XML do 'Project Record'</link>
+    </deliverables>
+</pr>
