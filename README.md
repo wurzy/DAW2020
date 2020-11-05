@@ -2,6 +2,7 @@
 Homework assignments for WebDev
 
 Weekly Homework Assignments for WebDev.</br>
+
 Table of contents:
 ======
 <li>
