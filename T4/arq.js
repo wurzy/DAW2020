@@ -48,9 +48,16 @@ function valid(str){
 
 function favicon(res){
     fs.readFile("bone.ico",function(err,data){
-        res.writeHead(200,{'Content-Type':'image/x-icon'})
-        res.write(data)
-        res.end()
+        if(err){
+            console.log("Favicon error: " + err)
+            res.writeHead(500,{'Content-Type':'text/html;charset=utf-8'})
+            res.end()
+        }
+        else {
+            res.writeHead(200,{'Content-Type':'image/x-icon'})
+            res.write(data)
+            res.end()
+        }
     })
 }
 
