@@ -2,8 +2,9 @@ var http= require('http')
 var arq=require('./arq')
 
 http.createServer(function(req,res){
+    var isget = req.method=='GET'
     var found = arq.valid(req.url)
-    if(found){
+    if(found && isget){
         var aux = found[0]
         if(aux.includes("home")){
             arq.welcome(res)
@@ -22,8 +23,14 @@ http.createServer(function(req,res){
             arq.favicon(res)
         }
         else{
-            console.log("Invalid URL: " + req.url)
-            arq.error(res)
+            if(!isget){
+                console.log("Invalid Request: " + req.method)
+                arq.invalid(res)
+            } 
+            else {
+                console.log("Invalid URL: " + req.url)
+                arq.error(res)
+            }
         } 
     }
 }).listen(7777)

@@ -5,11 +5,23 @@ function error(res){
     res.end()
 }
 
+function invalid(res){
+    res.writeHead(400,{'Content-Type':'text/html;charset=utf-8'})
+    res.end()
+}
+
 function send(url,res){
     fs.readFile(url,function(err,data){
-        res.writeHead(200,{'Content-Type':'text/html;charset=iso-8859-1'})
-        res.write(data)
-        res.end()
+        if(err){
+            console.log("Error: " + err)
+            res.writeHead(500,{'Content-Type':'text/html;charset=utf-8'})
+            res.end()
+        }
+        else {
+            res.writeHead(200,{'Content-Type':'text/html;charset=iso-8859-1'})
+            res.write(data)
+            res.end()
+        }
     })
 }
 
@@ -58,5 +70,6 @@ module.exports = {
     sendArq,
     valid,
     favicon,
-    error
+    error,
+    invalid
 }
