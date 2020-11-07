@@ -39,7 +39,5 @@
         <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.xsl">XSLT utilizado para gerar os ficheiros HTML</link>
         <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.dtd">DTD do arquivo de Arqueossítios do NW Português</link>
         <link url="https://github.com/wurzy/DAW2020/blob/main/T4/arq.xml">XML do arquivo de Arqueossítios do NW Português</link>
-        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/project-record/pr.dtd">DTD do 'Project Record'</link>
-        <link url="https://github.com/wurzy/DAW2020/blob/main/T4/project-record/pr.xml">XML do 'Project Record'</link>
     </deliverables>
 </pr>
