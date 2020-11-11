@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <meta>
+        <key>T5 - Node.js + Axios</key>
+        <title>T5 - Servidor Node.js para o dataset "Escola Musical"</title>
+        <subtitle>Envio de ficheiros HTML através de pedidos ao servidor de Node.js, com acesso a um dataset local "Escola Musical" através do Axios</subtitle>
+        <bdate>12-Nov-2020</bdate>
+        <edate>14-Nov-2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="a84464">
+            <name>Válter Ferreira Picas Carvalho</name>
+            <email>a84464@alunos.uminho.pt</email>
+            <url>https://github.com/wurzy</url>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que responde em <i>HTML</i> com informações sobre alunos, cursos e instrumentos de uma <u>Escola Musical</u>, presentes no <i>dataset</i> <b>db.json</b>, como objetos.
+        </p>
+        <p>
+            O servidor, localizado no seguinte <link url="http://localhost:4000">link</link>, apresenta ao utilizador uma lista inicial com 3 <i>links</i>, um para cada um dos objetos pertencentes ao <i>dataset</i>. Através do clique do utilizador nos elementos, é realizado um novo pedido ao servidor <i>Node.js</i>, acrescentando ao <i>URL</i> original <b>/cursos</b>, <b>/alunos</b> ou <b>/instrumentos</b> e listando todos os registos presentes no dataset pertencentes a esse objeto, sobre a forma de lista. Cada um desses elementos da lista permite, também, realizar um novo pedido ao servidor através do clique do utilizador, acrescentando ao URL o identificador único de cada registo, sendo-lhe retornado toda a informação desse mesmo registo por <i>HTML</i>. Por exemplo, o <i>URL</i> <b>http://localhost:4000/alunos/A18141</b> retorna toda a informação do aluno A18141 presente no <i>dataset</i>.
+        </p>
+        <p>
+            Nos ficheiros <i>HTML</i>, é definida a possibilidade voltar aos índices e, caso possível, obter o próximo registo ou voltar ao registo anterior, através de pedidos ao servidor do mesmo formato presente no parágrafo anterior.
+        </p>
+        <p>
+            Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </p>
+        <p>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/T5">GitHub</link>.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T5">Código fonte do servidor Node.js</link>
+    </deliverables>
+</pr>
