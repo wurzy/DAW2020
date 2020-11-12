@@ -4,6 +4,22 @@ function badRequest(req,res){
     res.end()
 }
 
+function parseLink(data) {
+    var arrData = data.split("link:")
+    data = arrData.length == 2? arrData[1]: data;
+    var parsed_data = {}
+
+    arrData = data.split(",")
+
+    for (d of arrData){
+        linkInfo = /<([^>]+)>;\s+rel="([^"]+)"/ig.exec(d)
+
+        parsed_data[linkInfo[2]]=linkInfo[1].replace("3001","4000").replace(/((\_sort=id|\_sort=nome)&_order=asc&)|(&_limit=[0-9]+)/g,"") // criar json com {first: http..., next: ...}
+    }
+
+    return parsed_data;
+}
+
 function sendIndex(res){
     res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
     res.write('<h2><span style="color:#2196F3">Escola de Música</span></h2>')
@@ -16,12 +32,17 @@ function sendIndex(res){
 }
 
 function sendAlunos(axios,res){
-    axios.get('http://localhost:3001/alunos?_sort=nome&_order=asc')
+    sendAlunosPage(axios,res,1)
+}
+
+function sendAlunosPage(axios,res,page){
+    axios.get('http://localhost:3001/alunos?_sort=nome&_order=asc&_page=' + page + '&_limit=20')
             .then(resp => { 
+                links = parseLink(resp.headers['link'])
                 alunos = resp.data
                 res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
                 res.write('<h2><span style="color:#2196F3">Alunos</span></h2>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>[<a href="/">Início</a>]</address>')
                 res.write('<ul>')
                 
                 alunos.forEach(a => {
@@ -29,11 +50,22 @@ function sendAlunos(axios,res){
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>')
+                
+                links['prev'] ? res.write(`[<a href="${links['prev']}">Anterior</a>]`)
+                              : res.write('[--]')
+
+                links['next'] ? res.write(`[<a href="${links['next']}">Próximo</a>]`)
+                              : res.write('[--]')
+
+                res.write('<p></p>[<a href="/">Início</a>]</adress>')
                 res.end()
             })
             .catch(error => {
                 console.log("Erro na obtenção da lista de alunos: " + error)
+                res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
+                res.write("<p> Página não existe: " + page + "</p>")
+                res.end()
             })
 }
 
@@ -50,7 +82,7 @@ function sendAluno(axios,res,id){
                       <p><b><span style="color:#2196F3">Ano:</span></b> ${a.anoCurso} </p>
                       <p><b><span style="color:#2196F3">Instrumento:</span></b> ${a.instrumento} </p>`)
 
-            res.write(`<address>[<a href="/alunos#${a.id}">Alunos</a>]</address> <address>[<a href="/">Ínicio</a>]</address>`)
+            res.write(`<address>[<a href="/alunos#${a.id}">Alunos</a>]</address> <address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -62,12 +94,17 @@ function sendAluno(axios,res,id){
 }
 
 function sendCursos(axios,res){
-    axios.get('http://localhost:3001/cursos?_sort=id&_order=asc')
+    sendCursosPage(axios,res,1)
+}
+
+function sendCursosPage(axios,res,page){
+    axios.get('http://localhost:3001/cursos?_sort=id&_order=asc&_page=' + page + '&_limit=20')
             .then(resp => { 
+                links = parseLink(resp.headers['link'])
                 cursos = resp.data
                 res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
                 res.write('<h2><span style="color:#2196F3">Cursos</span></h2>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>[<a href="/">Início</a>]</address>')
                 res.write('<ul>')
                 
                 cursos.forEach(c => {
@@ -75,11 +112,22 @@ function sendCursos(axios,res){
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>')
+
+                links['prev'] ? res.write(`[<a href="${links['prev']}">Anterior</a>]`)
+                              : res.write('[--]')
+
+                links['next'] ? res.write(`[<a href="${links['next']}">Próximo</a>]`)
+                              : res.write('[--]')
+
+                res.write('<p></p>[<a href="/">Início</a>]</adress>')
                 res.end()
             })
             .catch(error => {
-                console.log("Erro na obtenção da lista de alunos: " + error)
+                console.log("Erro na obtenção da lista de cursos: " + error)
+                res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
+                res.write("<p> Página não existe: " + page + "</p>")
+                res.end()
             })
 }
 
@@ -95,7 +143,7 @@ function sendCurso(axios,res,id){
                       <p><b><span style="color:#2196F3">Instrumento:</span></b></p>
                       <ul><li><b>Identificador</b>:<a name="${c.instrumento['id']}"></a><a href="http://localhost:4000/instrumentos/${c.instrumento['id']}">${c.instrumento['id']}</a></li><li><b>Nome</b>: ${c.instrumento['#text']}</li></ul>`)
 
-            res.write(`<address>[<a href="/cursos#${c.id}">Cursos</a>]</address><address>[<a href="/">Ínicio</a>]</address>`)
+            res.write(`<address>[<a href="/cursos#${c.id}">Cursos</a>]</address><address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -107,12 +155,17 @@ function sendCurso(axios,res,id){
 }
 
 function sendInstrumentos(axios,res){
-    axios.get('http://localhost:3001/instrumentos?_sort=id&_order=asc')
+    sendInstrumentosPage(axios,res,1)
+}
+
+function sendInstrumentosPage(axios,res,page){
+    axios.get('http://localhost:3001/instrumentos?_sort=id&_order=asc&_page=' + page + '&_limit=20')
             .then(resp => { 
+                links = parseLink(resp.headers['link'])
                 insts = resp.data
                 res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
                 res.write('<h2><span style="color:#2196F3">Instrumentos</span></h2>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>[<a href="/">Início</a>]</address>')
                 res.write('<ul>')
                 
                 insts.forEach(i => {
@@ -120,11 +173,22 @@ function sendInstrumentos(axios,res){
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
-                res.write('<address>[<a href="/">Ínicio</a>]</address>')
+                res.write('<address>')
+
+                links['prev'] ? res.write(`[<a href="${links['prev']}">Anterior</a>]`)
+                              : res.write('[--]')
+
+                links['next'] ? res.write(`[<a href="${links['next']}">Próximo</a>]`)
+                              : res.write('[--]')
+
+                res.write('<p></p>[<a href="/">Início</a>]</adress>')
                 res.end()
             })
             .catch(error => {
-                console.log("Erro na obtenção da lista de alunos: " + error)
+                console.log("Erro na obtenção da lista de instrumentos: " + error)
+                res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
+                res.write("<p> Página não existe: " + page + "</p>")
+                res.end()
             })
 }
 
@@ -137,7 +201,7 @@ function sendInstrumento(axios,res,id){
             res.write(`<p><b><span style="color:#2196F3">Identificador:</span></b> ${i['id']} </p>
                       <p><b><span style="color:#2196F3">Nome:</span></b> ${i['#text']} </p>`)
 
-            res.write(`<address>[<a href="/instrumentos#${i.id}">Instrumentos</a>]</address><address>[<a href="/">Ínicio</a>]</address>`)
+            res.write(`<address>[<a href="/instrumentos#${i.id}">Instrumentos</a>]</address><address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -152,9 +216,12 @@ module.exports = {
     badRequest,
     sendIndex,
     sendAlunos,
+    sendAlunosPage,
     sendAluno,
     sendCursos,
+    sendCursosPage,
     sendCurso,
     sendInstrumentos,
+    sendInstrumentosPage,
     sendInstrumento
 }
