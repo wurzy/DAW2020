@@ -14,7 +14,7 @@ function parseLink(data) {
     for (d of arrData){
         linkInfo = /<([^>]+)>;\s+rel="([^"]+)"/ig.exec(d)
 
-        parsed_data[linkInfo[2]]=linkInfo[1].replace("3001","4000").replace(/((\_sort=id|\_sort=nome)&_order=asc&)|(&_limit=[0-9]+)/g,"") // criar json com {first: http..., next: ...}
+        parsed_data[linkInfo[2]]=linkInfo[1].replace("3001","4000").replace(/((\_sort=id|\_sort=nome)&_order=asc&)|(&_limit=[1-9][0-9]*)/g,"") // criar json com {first: http..., next: ...}
     }
 
     return parsed_data;
@@ -46,12 +46,12 @@ function sendAlunosPage(axios,res,page){
                 res.write('<ul>')
                 
                 alunos.forEach(a => {
-                    var addr = `<a name="${a.id}"></a><a href="http://localhost:4000/alunos/${a.id}">[${a.id}] - ${a.nome}</a>`
+                    var addr = `<a name="${a.id}"></a><a href="http://localhost:4000/alunos?_page=${page}/${a.id}">[${a.id}] - ${a.nome}</a>`
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
                 res.write('<address>')
-                
+
                 links['prev'] ? res.write(`[<a href="${links['prev']}">Anterior</a>]`)
                               : res.write('[--]')
 
@@ -69,7 +69,7 @@ function sendAlunosPage(axios,res,page){
             })
 }
 
-function sendAluno(axios,res,id){
+function sendAluno(axios,res,id,page){
     axios.get('http://localhost:3001/alunos/' + id)
         .then(resp => {
             a = resp.data
@@ -82,7 +82,7 @@ function sendAluno(axios,res,id){
                       <p><b><span style="color:#2196F3">Ano:</span></b> ${a.anoCurso} </p>
                       <p><b><span style="color:#2196F3">Instrumento:</span></b> ${a.instrumento} </p>`)
 
-            res.write(`<address>[<a href="/alunos#${a.id}">Alunos</a>]</address> <address>[<a href="/">Início</a>]</address>`)
+            res.write(`<address>[<a href="/alunos?_page=${page}#${a.id}">Alunos</a>]</address> <address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -108,7 +108,7 @@ function sendCursosPage(axios,res,page){
                 res.write('<ul>')
                 
                 cursos.forEach(c => {
-                    var addr = `<a name="${c.id}"></a><a href="http://localhost:4000/cursos/${c.id}">[${c.id}] - ${c.designacao}</a>`
+                    var addr = `<a name="${c.id}"></a><a href="http://localhost:4000/cursos?_page=${page}/${c.id}">[${c.id}] - ${c.designacao}</a>`
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
@@ -131,7 +131,7 @@ function sendCursosPage(axios,res,page){
             })
 }
 
-function sendCurso(axios,res,id){
+function sendCurso(axios,res,id,page){
     axios.get('http://localhost:3001/cursos/' + id)
         .then(resp => {
             c = resp.data
@@ -141,9 +141,9 @@ function sendCurso(axios,res,id){
                       <p><b><span style="color:#2196F3">Designação:</span></b> ${c.designacao} </p>
                       <p><b><span style="color:#2196F3">Duração:</span></b> ${c.duracao} </p>
                       <p><b><span style="color:#2196F3">Instrumento:</span></b></p>
-                      <ul><li><b>Identificador</b>:<a name="${c.instrumento['id']}"></a><a href="http://localhost:4000/instrumentos/${c.instrumento['id']}">${c.instrumento['id']}</a></li><li><b>Nome</b>: ${c.instrumento['#text']}</li></ul>`)
+                      <ul><li><b>Identificador</b>:<a name="${c.instrumento['id']}"></a><a href="http://localhost:4000/instrumentos?_page=${page}&_curso=${id}/${c.instrumento['id']}">${c.instrumento['id']}</a></li><li><b>Nome</b>: ${c.instrumento['#text']}</li></ul>`)
 
-            res.write(`<address>[<a href="/cursos#${c.id}">Cursos</a>]</address><address>[<a href="/">Início</a>]</address>`)
+            res.write(`<address>[<a href="/cursos?_page=${page}#${c.id}">Cursos</a>]</address><address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -169,7 +169,7 @@ function sendInstrumentosPage(axios,res,page){
                 res.write('<ul>')
                 
                 insts.forEach(i => {
-                    var addr = `<a name="${i.id}"></a><a href="http://localhost:4000/instrumentos/${i.id}">[${i.id}] - ${i['#text']}</a>`
+                    var addr = `<a name="${i.id}"></a><a href="http://localhost:4000/instrumentos?_page=${page}/${i.id}">[${i.id}] - ${i['#text']}</a>`
                     res.write('<li>' + addr + '</li>')
                 })
                 res.write('</ul>')
@@ -192,7 +192,7 @@ function sendInstrumentosPage(axios,res,page){
             })
 }
 
-function sendInstrumento(axios,res,id){
+function sendInstrumento(axios,res,id,page){
     axios.get('http://localhost:3001/instrumentos/' + id)
         .then(resp => {
             i = resp.data
@@ -201,7 +201,27 @@ function sendInstrumento(axios,res,id){
             res.write(`<p><b><span style="color:#2196F3">Identificador:</span></b> ${i['id']} </p>
                       <p><b><span style="color:#2196F3">Nome:</span></b> ${i['#text']} </p>`)
 
-            res.write(`<address>[<a href="/instrumentos#${i.id}">Instrumentos</a>]</address><address>[<a href="/">Início</a>]</address>`)
+            res.write(`<address>[<a href="/instrumentos?_page=${page}#${i.id}">Instrumentos</a>]</address><address>[<a href="/">Início</a>]</address>`)
+            res.end()
+        })
+        .catch(error => {
+            console.log("Erro na obtenção do instrumento: " + error)
+            res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
+            res.write("<p> Instrumento não existe: " + id + "</p>")
+            res.end()
+        })
+}
+
+function sendInstrumentoCurso(axios,res,id,page,curso){
+    axios.get('http://localhost:3001/instrumentos/' + id)
+        .then(resp => {
+            i = resp.data
+            res.writeHead(200,{'Content-Type': 'text/html; charset=utf-8'})
+            
+            res.write(`<p><b><span style="color:#2196F3">Identificador:</span></b> ${i['id']} </p>
+                      <p><b><span style="color:#2196F3">Nome:</span></b> ${i['#text']} </p>`)
+
+            res.write(`<address>[<a href="/cursos?_page=${page}/${curso}">Voltar ao Curso</a>]</address><address>[<a href="/">Início</a>]</address>`)
             res.end()
         })
         .catch(error => {
@@ -223,5 +243,6 @@ module.exports = {
     sendCurso,
     sendInstrumentos,
     sendInstrumentosPage,
-    sendInstrumento
+    sendInstrumento,
+    sendInstrumentoCurso
 }
