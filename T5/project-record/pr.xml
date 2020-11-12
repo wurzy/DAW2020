@@ -6,7 +6,7 @@
         <title>T5 - Servidor Node.js para o dataset "Escola Musical"</title>
         <subtitle>Envio de ficheiros HTML através de pedidos ao servidor de Node.js, com acesso a um dataset local "Escola Musical" através do Axios com API fornecida pelo json-server</subtitle>
         <bdate>12-Nov-2020</bdate>
-        <edate>14-Nov-2020</edate>
+        <edate>13-Nov-2020</edate>
         <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
     </meta>
     <team>
@@ -35,5 +35,6 @@
     </abstract>
     <deliverables>
         <link url="https://github.com/wurzy/DAW2020/tree/main/T5">Código fonte do servidor Node.js</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T5/db.json">Dataset "Escola de Música"</link>
     </deliverables>
 </pr>
