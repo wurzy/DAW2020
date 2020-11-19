@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <meta>
+        <key>T6 - "To-Do List" (SPA)</key>
+        <title>T6 - Servidor Web (Node.js) para uma "To-Do List" que trabalha sobre uma única página HTML</title>
+        <subtitle>Envio de pedidos com os vários métodos REST para um servidor em Node.js de modo a formar uma Single Page Application (SPA) para uma "To-Do List"</subtitle>
+        <bdate>19-Nov-2020</bdate>
+        <edate>21-Nov-2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="a84464">
+            <name>Válter Ferreira Picas Carvalho</name>
+            <email>a84464@alunos.uminho.pt</email>
+            <url>https://github.com/wurzy</url>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que responde em <i>HTML</i> de uma única página acerca de uma <i>"To-Do List"</i> do utilizador, em que cada uma das tarefas está guardada num <i>dataset</i>. Para aceder ao <i>dataset</i>, foi utilizado o <b>json-server</b>, para criar automaticamente o API e o Axios para formar os pedidos pelos vários métodos REST (<i>POST</i>, <i>GET</i>,...).
+        </p>
+        <p>
+            O servidor, localizado no seguinte <link url="http://localhost:7777">link</link>, apresenta ao utilizador uma página com todas as suas tarefas por realizar ou que já foram realizadas, listadas de forma ascendente utilizando a data, isto é, é sempre listada a tarefa com prazo de entrega mais perto da data atual. Quando uma tarefa é dada por terminada, é gerado um pedido ao servidor para alterar o seu estado; quando o utilizador pretende eliminar uma tarefa, o servidor elimina-a da base de dados.
+        </p>
+        <p>
+            Na página <i>HTML</i>, são listadas todas as tarefas do utilizador, e é definida sobre elas a possibilidade de adicionar, editar ou remover cada uma.
+        </p>
+        <p>
+            Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </p>
+        <p>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/T6">GitHub</link>.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T6">Código fonte do servidor Node.js</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T6/db.json">Dataset com as várias tarefas</link>
+    </deliverables>
+</pr>
