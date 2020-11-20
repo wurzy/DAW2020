@@ -1,0 +1,22 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "To-Do List",
+  "main": "server.js",
+  "scripts": {
+    "test": "",
+    "start": "node server.js",
+    "devstart": "nodemon server.js"
+  },
+  "keywords": [
+    "js",
+    "to-do"
+  ],
+  "author": "Válter Carvalho a84464",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "json-server": "^0.16.3",
+    "nodemon": "^2.0.6"
+  }
+}
