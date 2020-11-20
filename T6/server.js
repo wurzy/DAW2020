@@ -146,7 +146,7 @@ var todoServer = http.createServer(function (req, res) {
                     axios.post('http://localhost:3000/tasks', resultado)
                         .then(resp => {
                             sendTasks(res,d)
-                            console.log("resultado: "+resp.data)
+                            console.log(resp.data)
                         })
                         .catch(erro => {
                             res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
