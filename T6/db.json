@@ -3,9 +3,9 @@
     {
       "id": "1",
       "created": "2020-12-11T12:14",
-      "due": "2027-10-03T00:14",
+      "due": "2027-10-29T00:14",
       "assigned": "Válter Carvalho",
-      "description": "Fazer TPC de DAW",
+      "description": "Fazer TPC 6 de DAW",
       "type": "TPC",
       "status": false
     },
@@ -20,8 +20,8 @@
     },
     {
       "id": "3",
-      "due": "2020-12-11T00:14",
       "created": "2020-12-11T00:14",
+      "due": "2021-05-12T00:14",
       "assigned": "João Pífeo",
       "description": "Mudar o sobrenome",
       "type": "Judicial",

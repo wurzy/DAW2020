@@ -110,7 +110,7 @@ function wrapTasks(undoneTasks,doneTasks,d){
                     let data = {}
 
                     data["id"]=parseInt(tr.cells[0].innerHTML)
-                    data["created"]=fixDate(tr.cells[1].innerHTML.replace(/<input type=\"datetime-local\" value=/g,"").replace(/[\">]/g,""))
+                    data["created"]=fixDate(tr.cells[1].innerHTML)
                     data["due"]=document.getElementById(iid).value
                     data["assigned"]=tr.cells[3].innerHTML 
                     data["description"]=tr.cells[4].innerHTML 
