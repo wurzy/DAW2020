@@ -19,30 +19,43 @@ function recuperaInfo(request, callback){
     }
 }
 
-function generateRows(tasks){
+function generateRows(tasks,type){
+    var i = 0
     let rows = `<table class="w3-table w3-bordered">
                 <tr>
                     <th>ID</th>
-                    <th>Data de Entrega</th>
+                    <th>Data Limite</th>
                     <th>Responsável</th>
                     <th>Descrição</th>
-                    <th>Status</th>
-                </tr>`
+                    <th></th>
+                `  
+                if(type=="undone") rows+=
+                `
+                    <th></th>
+                `
+                rows += `</tr>`
     tasks.forEach( t => {
+        i++
         rows += `
-            <tr>
+            <tr id=${i}>
                 <td style="width=150px;overflow:hidden">${t.id}</td>
-                <td style="width=150px;overflow:hidden">${t.due}</td>
-                <td style="width=150px;overflow:hidden">${t.assigned}</td>
-                <td style="width=150px;overflow:hidden">${t.description}</td>
-                <td style="width=150px;overflow:hidden">${t.status}</td>
-            </tr>
-        `
+                <td contenteditable='true' style="width=150px;overflow:hidden"><input type="datetime-local" value="${t.due}"/></td>
+                <td contenteditable='true' style="width=150px;overflow:hidden">${t.assigned}</td>
+                <td contenteditable='true' style="width=150px;overflow:hidden">${t.description}</td>`
+                if(type=="undone") rows+=
+                `
+                <td style="width=150px;overflow:hidden"><button type="submit" onclick="sendTaskAlteration(${t.id},${i})">Alterar</button></td> 
+                `
+                rows += `<td style="width=150px;overflow:hidden"><button type="submit" onclick=`
+                rows += type==""?`"deleteTask(${t.id})">Remover`:`"doneTask(${t.id})">Terminar`
+                rows +=`</button></td>
+                          </tr>`
       })
       rows += `</table>`
       return rows
 }
 
+// axios.delete(api() + '/products/' + id)
 // Task List HTML Page Template  -----------------------------------------
 function wrapTasks(undoneTasks,doneTasks,d){
     return `
@@ -58,14 +71,56 @@ function wrapTasks(undoneTasks,doneTasks,d){
             <div class="w3-container w3-blue-gray">
                 <h2>Lista de tarefas por realizar</h2>
             </div>
-            ${generateRows(undoneTasks)}
+            ${generateRows(undoneTasks,"undone")}
             <div class="w3-container w3-blue-gray">
                 <h2>Lista de tarefas realizadas</h2>
             </div>
-            ${generateRows(doneTasks)}  
+            ${generateRows(doneTasks,"")}  
             <div class="w3-container w3-blue-gray">
                 <address>Lista atualizada em ${d}</address>
             </div>
+            <script>
+                function generateRowJson(id,trid){
+                    let tr = document.getElementById(trid)
+                    let data = {}
+
+                    data["id"]=parseInt(tr.cells[0].innerHTML)
+                    data["due"]=tr.cells[1].innerHTML.replace(/<input type=\"datetime-local\" value=/g,"").replace(/[\">]/g,"")  
+                    data["assigned"]=tr.cells[2].innerHTML 
+                    data["description"]=tr.cells[3].innerHTML 
+                    data["status"]=false
+
+                    return data
+                }
+                
+                function sendRequest(id,req,json){
+                    let xhr = new XMLHttpRequest()
+                    xhr.open(req, 'http://localhost:7777/tasks/'+id)
+                    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xhr.send(JSON.stringify(json))
+                }
+
+                function sendTaskAlteration(id,trid){
+                    let json = generateRowJson(id,trid)
+                    sendRequest(id,"PUT",json)
+                    document.location.href='/'
+                }
+
+                function doneTask(id){
+                    let json = {}
+                    json["id"] = id
+                    json["status"] = true
+                    sendRequest(id,"PATCH",json)
+                    document.location.href='/'
+                }
+
+                function deleteTask(id){
+                    let json = {}
+                    json["id"] = id
+                    sendRequest(id,"DELETE",json)
+                    document.location.href='/'
+                }
+            </script>
         </body>
     </html>
   `
@@ -78,7 +133,7 @@ function taskForm(){
             <p><label class="w3-text-blue-gray"></label></p>
                 <form class="w3-container" action="/tasks" method="POST">
                     <label class="w3-text-blue-gray"><b>Identificador</b></label>
-                    <input class="w3-input w3-border w3-light-grey" type="text" name="id">
+                    <input class="w3-input w3-border w3-light-grey" type="number" name="id">
 
                     <label class="w3-text-blue-gray"><b>Data Limite</b></label>
                     <input class="w3-input w3-border w3-light-grey" type="datetime-local" name="due">
@@ -104,11 +159,55 @@ function sendTasks(res,d){
                         res.end()
         }))
         .catch(error => {
-            console.log(error)
+            console.log("Error no SendTasks: " + error)
             res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
             res.write("<p>Não foi possível obter a lista de tarefas completa...")
             res.end()
         })
+}
+
+function restfulData(req,res,d,method){
+    let data = '';
+    req.on('data', chunk => {
+      data += chunk;
+    })
+    req.on('end', () => {
+        data = JSON.parse(data)
+        var axiosreq
+        switch(method){
+            case "PUT":
+                axiosreq = axios.put('http://localhost:3000/tasks/'+data["id"], data)
+                break
+            case "PATCH":
+                axiosreq = axios.patch('http://localhost:3000/tasks/'+data["id"], data)
+                break
+            case "DELETE":
+                axiosreq = axios.delete('http://localhost:3000/tasks/'+data["id"])
+                break  
+            default:
+                break           
+        }
+        axiosreq
+            .then(resp => {
+                sendTasks(res,d)
+                console.log(resp.data)
+            })
+            .catch(erro => {
+                console.log("Erro no request" + method +": " + erro)
+                res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                res.write('<p>Erro no ' + method + ' de tarefa: ' + erro + '</p>')
+                res.write('<p><a href="/">Voltar</a></p>')
+                res.end()
+            })
+    })     
+}
+
+function badRequest(res,method){
+    console.log("Error no request: " + method)
+    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+    res.write('<p>Recebi um ' + method + ' não suportado.</p>')
+    res.write('<p><a href="/">Voltar</a></p>')
+    res.end()    
 }
 
 // Server setup
@@ -132,9 +231,7 @@ var todoServer = http.createServer(function (req, res) {
                 sendTasks(res,d)
             }
             else{
-                res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-                res.write("<p>" + req.method + " " + req.url + " não suportado neste servidor.</p>")
-                res.end()
+                badRequest(res,"GET")
             }
             break
         case "POST":
@@ -149,6 +246,7 @@ var todoServer = http.createServer(function (req, res) {
                             console.log(resp.data)
                         })
                         .catch(erro => {
+                            console.log("Error nos posts: " + erro)
                             res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
                             res.write('<p>Já existe uma tarefa com esse ID: ' + erro + '</p>')
                             res.write('<p><a href="/">Voltar</a></p>')
@@ -157,16 +255,36 @@ var todoServer = http.createServer(function (req, res) {
                 })
             }
             else{
-                res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-                res.write('<p>Recebi um POST não suportado.</p>')
-                res.write('<p><a href="/">Voltar</a></p>')
-                res.end()
+                badRequest(res,"POST")
             }
             break
+        case "PUT":
+            if(req.url.match(/^\/tasks\/[0-9]+$/)){
+                restfulData(req,res,d,"PUT")
+            }
+            else {
+                badRequest(res,"PUT")
+            }
+            break
+        case "PATCH":
+            if(req.url.match(/^\/tasks\/[0-9]+$/)){
+                restfulData(req,res,d,"PATCH")
+            }
+            else{
+                badRequest(res,"PATCH")
+            }
+            break
+        case "DELETE":
+            if(req.url.match(/^\/tasks\/[0-9]+$/)){
+                restfulData(req,res,d,"DELETE")
+            }
+            else{
+                badRequest(res,"DELETE")
+            }
+            break        
         default: 
-            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
-            res.write("<p>" + req.method + " não suportado neste servidor.</p>")
-            res.end()
+            badRequest(res,req.method)
+            break
     }
     }
 })
