@@ -2,73 +2,111 @@
   "tasks": [
     {
       "id": "1",
-      "due": "2020-12-11T00:14",
+      "created": "2020-12-11T12:14",
+      "due": "2027-10-03T00:14",
       "assigned": "Válter Carvalho",
       "description": "Fazer TPC de DAW",
+      "type": "TPC",
       "status": false
     },
     {
       "id": "2",
       "due": "2020-12-11T00:14",
+      "created": "2012-12-11T00:14",
       "assigned": "Manuel Elástico",
       "description": "Ver os Incríveis 2",
+      "type": "Filmes",
       "status": true
     },
     {
       "id": "3",
       "due": "2020-12-11T00:14",
+      "created": "2020-12-11T00:14",
       "assigned": "João Pífeo",
       "description": "Mudar o sobrenome",
+      "type": "Judicial",
       "status": false
     },
     {
       "id": "4",
       "due": "2020-12-11T00:14",
+      "created": "2020-12-11T00:14",
       "assigned": "José João",
       "description": "Terminar dataset de calões polacos",
+      "type": "Trabalho",
       "status": true
     },
     {
       "id": "5",
       "due": "2020-12-10T00:29",
+      "created": "2020-12-11T00:14",
       "assigned": "R2D2",
       "description": "Instalar pernas metálicas",
+      "type": "Cirurgia",
       "status": true
     },
     {
       "id": "6",
       "due": "2020-11-20T00:43",
+      "created": "2020-12-11T00:14",
       "assigned": "Bernardo Silva",
       "description": "Apagar o twitter",
+      "type": "Bom-Senso",
       "status": true
     },
     {
       "id": "7",
       "due": "2020-11-20T05:56",
+      "created": "2020-12-11T00:14",
       "assigned": "Paulo Futre",
       "description": "Arranjar o motor de arranque",
+      "type": "Farmaceutica",
       "status": true
     },
     {
       "id": "8",
       "due": "2021-01-07T21:03",
+      "created": "2020-12-11T00:14",
       "assigned": "Ricardo Fazeres",
       "description": "Dar Upload do vídeo",
+      "type": "Trabalho",
       "status": false
     },
     {
       "id": "9",
       "due": "2021-03-10T00:04",
+      "created": "2020-12-11T00:14",
       "assigned": "Miguel Pereira",
       "description": "Acabar de lavar o carro",
+      "type": "Trabalho",
       "status": false
     },
     {
       "id": "10",
       "due": "2021-01-08T00:18",
+      "created": "2020-12-11T00:14",
       "assigned": "João Matilde",
       "description": "Celebrar o aniversário do Zé Afro",
+      "type": "Lazer",
       "status": true
+    },
+    {
+      "id": "11",
+      "created": "2020-11-21T17:42",
+      "due": "2077-01-30T17:41",
+      "assigned": "CD Projekt Red",
+      "description": "Lançar o Cyberpunk",
+      "type": "Esperança",
+      "status": false
+    },
+    {
+      "id": "12",
+      "created": "2020-11-21T17:51",
+      "due": "2021-01-25T17:51",
+      "assigned": "Válter Carvalho",
+      "description": "Passar a todas as cadeiras",
+      "type": "Compromisso",
+      "status": false
     }
   ]
 }

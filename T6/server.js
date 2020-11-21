@@ -19,14 +19,34 @@ function recuperaInfo(request, callback){
     }
 }
 
+function formatDate(date){
+    const months = {
+        0: 'Jan',
+        1: 'Feb',
+        2: 'Mar',
+        3: 'Apr',
+        4: 'May',
+        5: 'Jun',
+        6: 'Jul',
+        7: 'Aug',
+        8: 'Sep',
+        9: 'Oct',
+        10: 'Nov',
+        11: 'Dec'
+    }
+    return `${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`
+}
+
 function generateRows(tasks,type){
     var i = 0
     let rows = `<table class="w3-table w3-bordered">
                 <tr>
                     <th>ID</th>
+                    <th>Data de Criação</th>
                     <th>Data Limite</th>
                     <th>Responsável</th>
                     <th>Descrição</th>
+                    <th>Tipo</th>
                     <th></th>
                 `  
                 if(type=="undone") rows+=
@@ -37,17 +57,19 @@ function generateRows(tasks,type){
     tasks.forEach( t => {
         i++
         rows += `
-            <tr id=${i}>
+            <tr id = ${i}>
                 <td style="width=150px;overflow:hidden">${t.id}</td>
-                <td contenteditable='true' style="width=150px;overflow:hidden"><input type="datetime-local" value="${t.due}"/></td>
+                <td style="width=150px;overflow:hidden">${formatDate(new Date(t.created))}</td>
+                <td contenteditable='true' style="width=150px;overflow:hidden"><input id="a${i}" type="datetime-local" value="${t.due}"/></td>
                 <td contenteditable='true' style="width=150px;overflow:hidden">${t.assigned}</td>
-                <td contenteditable='true' style="width=150px;overflow:hidden">${t.description}</td>`
+                <td contenteditable='true' style="width=150px;overflow:hidden">${t.description}</td>
+                <td contenteditable='true' style="width=150px;overflow:hidden">${t.type}</td>`
                 if(type=="undone") rows+=
                 `
-                <td style="width=150px;overflow:hidden"><button type="submit" onclick="sendTaskAlteration(${t.id},${i})">Alterar</button></td> 
+                <td style="width=150px;overflow:hidden"><button type="submit" onclick="sendTaskAlteration(${t.id},${i},'a${i}')">&#8635;</button></td> 
                 `
                 rows += `<td style="width=150px;overflow:hidden"><button type="submit" onclick=`
-                rows += type==""?`"deleteTask(${t.id})">Remover`:`"doneTask(${t.id})">Terminar`
+                rows += type==""?`"deleteTask(${t.id})">&#10005;`:`"doneTask(${t.id})">&#10003;`
                 rows +=`</button></td>
                           </tr>`
       })
@@ -80,16 +102,21 @@ function wrapTasks(undoneTasks,doneTasks,d){
                 <address>Lista atualizada em ${d}</address>
             </div>
             <script>
-                function generateRowJson(id,trid){
+                function fixDate(date){
+                    return new Date(date).toISOString().substring(0,16)
+                }
+
+                function generateRowJson(id,trid,iid){
                     let tr = document.getElementById(trid)
                     let data = {}
 
                     data["id"]=parseInt(tr.cells[0].innerHTML)
-                    data["due"]=tr.cells[1].innerHTML.replace(/<input type=\"datetime-local\" value=/g,"").replace(/[\">]/g,"")  
-                    data["assigned"]=tr.cells[2].innerHTML 
-                    data["description"]=tr.cells[3].innerHTML 
+                    data["created"]=fixDate(tr.cells[1].innerHTML.replace(/<input type=\"datetime-local\" value=/g,"").replace(/[\">]/g,""))
+                    data["due"]=document.getElementById(iid).value
+                    data["assigned"]=tr.cells[3].innerHTML 
+                    data["description"]=tr.cells[4].innerHTML 
+                    data["type"]=tr.cells[5].innerHTML 
                     data["status"]=false
-
                     return data
                 }
                 
@@ -100,8 +127,8 @@ function wrapTasks(undoneTasks,doneTasks,d){
                     xhr.send(JSON.stringify(json))
                 }
 
-                function sendTaskAlteration(id,trid){
-                    let json = generateRowJson(id,trid)
+                function sendTaskAlteration(id,trid,iid){
+                    let json = generateRowJson(id,trid,iid)
                     sendRequest(id,"PUT",json)
                     document.location.href='/'
                 }
@@ -143,6 +170,9 @@ function taskForm(){
 
                     <label class="w3-text-blue-gray"><b>Descrição</b></label>
                     <input class="w3-input w3-border w3-light-grey" type="text" name="description">
+
+                    <label class="w3-text-blue-gray"><b>Tipo</b></label>
+                    <input class="w3-input w3-border w3-light-grey" type="text" name="type">
 
                     <p><label class="w3-text-blue-gray"></label></p>
                     <input class="w3-btn w3-blue-grey" type="submit" value="Registar"/>
@@ -238,6 +268,7 @@ var todoServer = http.createServer(function (req, res) {
             if(req.url == '/tasks'){
                 recuperaInfo(req, resultado => {
                     resultado["status"] = false
+                    resultado["created"] = d
                     let json = JSON.stringify(resultado)
                     console.log('POST de tarefa:' + json)
                     axios.post('http://localhost:3000/tasks', resultado)
