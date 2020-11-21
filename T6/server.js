@@ -5,7 +5,7 @@ var static = require('./static')
 var {parse} = require('querystring')
 
 // Aux. Functions
-// Retrieves student info from request body --------------------------------
+// Retrieves json info from request body --------------------------------
 function recuperaInfo(request, callback){
     if(request.headers['content-type'] == 'application/x-www-form-urlencoded'){
         let body = ''
@@ -77,7 +77,6 @@ function generateRows(tasks,type){
       return rows
 }
 
-// axios.delete(api() + '/products/' + id)
 // Task List HTML Page Template  -----------------------------------------
 function wrapTasks(undoneTasks,doneTasks,d){
     return `
