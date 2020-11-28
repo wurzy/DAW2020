@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .w3-card-4
+      header.w3-container.w3-blue
+        h3.w3-left Student: #{info.numero} 
+      ul
+       li 
+        b Student Number: 
+        | #{info.numero} 
+       li
+        b Name: 
+        | #{info.nome}
+       li
+        b GitHub: 
+        if info.git 
+         a(href=`${info.git}`) Click Here
+        else 
+         | Not Available
+        li
+         b Homework Assignments: 
+         if info.tpc.length > 0
+          - var n=1
+          ul
+           each tpc in info.tpc
+            li(style="list-style: none;") 
+             b ##{n}: 
+             if tpc==0 
+              | &#10060; 
+             else 
+              | &#10004;&#65039;
+             - n++
+         else 
+          | Didn't Submit Any   
+           
+      footer.w3-container.w3-blue
+       p 
+        br 
