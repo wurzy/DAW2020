@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <meta>
+        <key>T7 - Express Node.js Server</key>
+        <title>T7 - Servidor Web (Node.js) para aceder a uma base de dados em Mongo</title>
+        <subtitle>Envio de pedidos com os vários métodos REST para um servidor em Node.js, modularizado com Express, que utiliza MongoDB para persistência de dados</subtitle>
+        <bdate>27-Nov-2020</bdate>
+        <edate>29-Nov-2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="a84464">
+            <name>Válter Ferreira Picas Carvalho</name>
+            <email>a84464@alunos.uminho.pt</email>
+            <url>https://github.com/wurzy</url>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos <i>HTTP</i>, mais concretamente, um servidor que responde em <i>HTML</i>, em que é utilizado o Express para modularizar o código e torná-lo mais legível, separando os vários pedidos, lógica de negócio e páginas <i>HTML</i> (geradas apartir de ficheiros <i>PUG</i>).
+        </p>
+        <p>
+            Foi utilizada a base de dados MongoDB para guardar de forma persistente todas as transações realizadas pelo programa, a ver de seguida.
+        </p>
+        <p>
+            O servidor, localizado no seguinte <link url="http://localhost:7700">link</link>, apresenta ao cliente uma página <i>HTML</i> com todos os registos de alunos na base de dados. Para cada registo, é possível aceder à informação mais detalhada de cada um assim como eliminar ou editar cada um. Cada uma destas transações geram métodos <b>GET</b>, <b>PUT</b>, <b>POST</b> e <b>DELETE</b> de modo a serem processadas no servidor.
+        </p>
+        <p>
+            Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </p>
+        <p>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/tree/main/T7">GitHub</link>.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T7">Código fonte do servidor Node.js, modularizado com Express</link>
+        <link url="https://github.com/wurzy/DAW2020/blob/main/T7/DAW2020.json">Dataset utilizado para este TPC</link>
+    </deliverables>
+</pr>
