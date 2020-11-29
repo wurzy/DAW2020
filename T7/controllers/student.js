@@ -25,5 +25,12 @@ module.exports.delete = id => {
     return Student
         .deleteOne({numero: id})
         .exec()
+}
 
+module.exports.update = student => {
+    id = student["id"]
+    delete student["id"]
+    return Student
+        .replaceOne({numero: id}, student)
+        .exec()
 }

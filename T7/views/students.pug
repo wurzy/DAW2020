@@ -21,6 +21,9 @@ block content
                 td= s.nome
                 td= s.git
                 td
+                 a(href=`/students/edit/${s.numero}`)
+                  input(class="w3-btn w3-blue-grey" type="button" value="EDIT")
+                 |  
                  input(class="w3-btn w3-blue-grey" type="button" value="DELETE", onclick=`sendDelete('/students/${s.numero}')`)
       else
         .w3-container

@@ -22,13 +22,20 @@ router.get('/students', function(req, res, next) {
 
 /* GET student register form. */
 router.get('/students/register', function(req, res, next) {
-  res.render('registerform')
+  res.render('form',{mode: "GET"})
 })
 
 /* GET student page by id. */
 router.get('/students/:id', function(req, res, next) {
   Student.lookUp(req.params.id)
             .then(data => res.render('student', { info: data }))
+            .catch(err => res.render('error', {error: err}))
+})
+
+/* GET student edit form by id. */
+router.get('/students/edit/:id', function(req, res, next) {
+  Student.lookUp(req.params.id)
+            .then(data => res.render('form', { mode: "PUT", s: data }))
             .catch(err => res.render('error', {error: err}))
 })
 
@@ -45,7 +52,6 @@ router.post('/students', function(req,res,next){
     i++
   }
   mongojson["tpc"] = tpc
-  console.log(JSON.stringify(mongojson))
 
   Student.insert(mongojson)
             .then(data => res.render('confirm', {numero: mongojson["numero"], type: "POST"}))
@@ -59,4 +65,11 @@ router.delete('/students/:id', function(req, res, next) {
             .catch(err => res.render('error', {error: err}))
 })
 
+/* PUT student update into the db */
+router.put('/students/:id', function(req, res, next) {
+  Student.update(req.body)
+            .then(data => res.render('confirm', {numero: req.params.id, type: "PUT"}))
+            .catch(err => res.render('error', {error: err}))
+})
+ 
 module.exports = router;
