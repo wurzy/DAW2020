@@ -20,3 +20,10 @@ module.exports.insert = student => {
     var newStudent = new Student(student)
     return newStudent.save()
 }
+
+module.exports.delete = id => {
+    return Student
+        .deleteOne({numero: id})
+        .exec()
+
+}

@@ -13,12 +13,15 @@ block content
               th Number
               th Name
               th Git
+              th
             each s in list
               tr
                 td
                  a(href=`/students/${s.numero}`) #{s.numero}
                 td= s.nome
                 td= s.git
+                td
+                 a(href=`/students/${s.numero}`, onclick="sendDelete(this.href,event)") Delete
       else
         .w3-container
           p There are no students...
@@ -26,5 +29,12 @@ block content
       footer.w3-container.w3-blue
        p 
         br 
-
+    script. 
+     function sendDelete(href,event){
+        let xhttp = new XMLHttpRequest();
+        event.preventDefault()
+        xhttp.open("DELETE", href, true);
+        xhttp.send();
+        document.location.href='/'
+     }
   

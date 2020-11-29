@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .w3-card-4
+     header.w3-container.w3-blue
+        h3.w3-left Success
+     p(style="text-indent: 20px") Student #{numero} was succesfully
+      |  
+      if type=="POST"
+       | added to the database.   
+      else if type=="DELETE"
+       | deleted from the database.  
+      else if type=="PUT"
+       | edited on the database.
+      else 
+       | demoted to spaghetti status.
+     p(style="text-indent: 20px")
+      a(href="/") Back         
+     footer.w3-container.w3-blue
+       p 
+        br 

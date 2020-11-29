@@ -1,0 +1,13 @@
+[Object: null prototype] { numero: '', nome: '', git: '' }
+POST /students - - ms - -
+
+[Object: null prototype] {
+  numero: '',
+  nome: '',
+  git: '',
+  tpc1: 'on',
+  tpc2: 'on',
+  tpc3: 'on',
+  tpc4: 'on',
+  tpc5: 'on'
+}
