@@ -52,6 +52,7 @@ router.post('/students', function(req,res,next){
             .catch(err => res.render('error', {error: err}))
 })
 
+/* DELETE student from the db */
 router.delete('/students/:id', function(req, res, next) {
  Student.delete(req.params.id)
             .then(data => res.render('confirm', {numero: req.params.id, type: "DELETE"}))
