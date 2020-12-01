@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose')
+var methodOverride = require('method-override')
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/DAW2020';
@@ -25,6 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(methodOverride('_method'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -5,6 +5,8 @@ block content
       header.w3-container.w3-blue
         h3.w3-left Student: #{info.numero} 
       ul
+       li(style="list-style: none;") 
+        img(src=`/public/images/${info.photo}`, alt="Not Available", style="width:255px;height:255px;")
        li 
         b Student Number: 
         | #{info.numero} 
@@ -32,7 +34,9 @@ block content
              - n++
          else 
           | Didn't Submit Any   
-           
+      p(style="text-indent: 20px")
+       a(href="/") Back  
+
       footer.w3-container.w3-blue
        p 
         br 

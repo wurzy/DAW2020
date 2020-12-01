@@ -10,17 +10,23 @@ block content
         .w3-container 
           table.w3-table-all
             tr 
-              th Number
-              th Name
-              th Git
-              th
+              th(style="text-align: center; vertical-align: middle;") Photo
+              th(style="text-align: center; vertical-align: middle;") Number
+              th(style="text-align: center; vertical-align: middle;") Name
+              th(style="text-align: center; vertical-align: middle;") Git
+              th(style="text-align: center; vertical-align: middle;")
             each s in list
               tr
-                td
+                td(style="text-align: center; vertical-align: middle;") 
+                 if s.photo 
+                  img(src=`/public/images/${s.photo}`, alt="Not Available", style="width:255px;height:255px;")
+                 else 
+                  img(alt="Not Available", style="width:255px;height:255px;") 
+                td(style="text-align: center; vertical-align: middle;")
                  a(href=`/students/${s.numero}`) #{s.numero}
-                td= s.nome
-                td= s.git
-                td
+                td(style="text-align: center; vertical-align: middle;")= s.nome
+                td(style="text-align: center; vertical-align: middle;")= s.git
+                td(style="text-align: center; vertical-align: middle;")
                  a(href=`/students/edit/${s.numero}`)
                   input(class="w3-btn w3-blue-grey" type="button" value="EDIT")
                  |  

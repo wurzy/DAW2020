@@ -4,6 +4,7 @@ var studentSchema = new mongoose.Schema({
     numero: String,
     nome: String,
     git: String,
+    photo: String,
     tpc: [Number]
 });
 

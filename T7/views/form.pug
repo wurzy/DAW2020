@@ -10,11 +10,14 @@ block content
         | Edit Student  
     .w3-container
      br
-     form(action='/students', method='POST', id="form")
-      if mode=="GET"
+     if mode=="GET"
+      form(action='/students', method='POST', id="form", enctype="multipart/form-data")
+       label(class="w3-text-blue-gray")
+        b Select a Photo:
+       input(class="w3-input w3-border w3-light-grey", type="file",  name="photo", accept="image/*")    
        label(class="w3-text-blue-gray")
         b Student Number:
-       input(class="w3-input w3-border w3-light-grey", type="text",  name="numero")    
+       input(class="w3-input w3-border w3-light-grey", type="text",  name="numero")
        label(class="w3-text-blue-gray")
         b Name:
        input(class="w3-input w3-border w3-light-grey", type="text",  name="nome")    
@@ -34,7 +37,12 @@ block content
         - n++
        br
        input(class="w3-btn w3-blue-grey" type="submit"  value="Register")                         
-      else
+     else
+      form(action=`/students/${s.numero}?_method=PUT`, method='POST', id="form", enctype="multipart/form-data")
+       input(type="hidden", name='id', value=`${s.numero}`)
+       label(class="w3-text-blue-gray")
+        b Select a Photo:
+       input(class="w3-input w3-border w3-light-grey", type="file",  name="photo", accept="image/*")    
        label(class="w3-text-blue-gray")
         b Student Number:
        input(class="w3-input w3-border w3-light-grey", type="text",  name="numero", value=`${s.numero}`)    
@@ -59,40 +67,12 @@ block content
         br
         - n++
        br
-       input(class="w3-btn w3-blue-grey" onclick=`sendPut('/students/${s.numero}')` type="button" value="Save")
-      |  
-      input(class="w3-btn w3-blue-grey" type="reset" value="Reset")
+       input(class="w3-btn w3-blue-grey" type="submit"  value="Save")                         
+       |  
+       input(class="w3-btn w3-blue-grey" type="reset" value="Reset")
      br
     p(style="text-indent: 20px")
       a(href="/") Back  
     footer.w3-container.w3-blue
        p 
         br
-    if mode=="PUT"
-     script. 
-      function sendPut(href){
-        let body = {}
-        let tpcs = []
-        let i = 1
-        elems = document.getElementById("form").elements
-        body["id"] = elems["numero"].defaultValue
-        body["numero"] = elems["numero"].value
-        body["nome"] = elems["nome"].value
-        body["git"] = elems["git"].value
-        while (i < 9){
-          tpcs.push(elems[`tpc${i}`].checked ? 1 : 0)
-          i++
-        }
-        body["tpc"] = tpcs 
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("PUT", href, true)
-        xhttp.setRequestHeader("Content-Type", "application/json")
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.open();
-            document.write(xhttp.responseText);
-            document.close();
-          }
-        }
-        xhttp.send(JSON.stringify(body))
-      }     
