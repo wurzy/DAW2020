@@ -93,7 +93,6 @@ router.put('/students/:id', upload.single('photo'), function(req, res, next) {
   json["photo"] = req.file ? req.file.filename : null
   json["tpc"] = tpc
 
-  console.log(json)
   Student.update(json)
             .then(data => res.render('confirm', {numero: req.params.id, type: "PUT"}))
             .catch(err => res.render('error', {error: err}))
