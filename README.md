@@ -10,4 +10,4 @@ Table of contents:
 * <a href="T5">T5</a>: Node.js server using the json-server and axios packages for database requests</br>
 * <a href="T6">T6</a>: To-Do List using Node.js (SPA)</br>
 * <a href="T7">T7</a>: Modular Express Node.js server with MongoDB storage</br>
-* <a href="T8">T8</a>: Introduction to JQuery, dynamic forms for multi-file uploads and file downloads</br>
+* <a href="T8">T8</a>: Introduction to JQuery, dynamic forms for multi-file uploads and file downloads on a Node.js server</br>
