@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "pr.dtd">
+<pr>
+    <meta>
+        <key>T8 - Upload/Download de ficheiros + JQuery</key>
+        <title>T8 - Servidor Web (Node.js) para guardar e enviar ficheiros do utilizador, com a framework JQuery</title>
+        <subtitle>Servidor Web (Node.js) que utiliza um formulário para upload de ficheiros para posterior download, com JQuery para criar um formulário dinâmico</subtitle>
+        <bdate>04-Dez-2020</bdate>
+        <edate>06-Dez-2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <member id="a84464">
+            <name>Válter Ferreira Picas Carvalho</name>
+            <email>a84464@alunos.uminho.pt</email>
+            <url>https://github.com/wurzy</url>
+        </member>
+    </team>
+    <abstract>
+        <p>
+            De modo a consolidar conhecimentos sobre servidores em <i>Node.js</i>, foi realizado um projeto individual no qual se desenvolve um servidor que responde a pedidos de upload e de download de um utilizador, onde é listado todos os seus uploads para posterior consulta e eventual download. Para realizar um upload, é dado ao utilizador um formulário onde pode acrescentar um ou mais ficheiros para adicionar, assim como os seus metadados adicionais. 
+        </p>
+        <p>
+            O formulário é adicionado dinamicamente com <b>JQuery</b>>, em que o utilizador decide a quantidade de ficheiros que pretende adicionar.
+        </p>
+        <p>
+            O servidor, localizado no seguinte <link url="http://localhost:7700">link</link>, apresenta ao cliente uma página <i>HTML</i> com todos os seus uploads completos, onde é possível, através de cada elemento da lista, fazer o respetivo download do ficheiro, assim como pré-visualizar. Em <link url="http://localhost:7700/files/upload">link</link>, é possível realizar o upload dos ficheiros.
+        </p>
+        <p>
+            Todo este projeto foi realizado no contexto da Unidade Curricular <b>DAW</b> (Desenvolvimento de Aplicações Web) do Mestrado em Engenharia Informática, Universidade do Minho.
+        </p>
+        <p>
+            Todos os ficheiros estão disponibilizados no repositório público presente na página do autor, no <link url="https://github.com/wurzy/DAW2020/tree/main/T8">GitHub</link>.
+        </p>
+    </abstract>
+    <deliverables>
+        <link url="https://github.com/wurzy/DAW2020/tree/main/T8">Código fonte do servidor Node.js</link>
+    </deliverables>
+</pr>
