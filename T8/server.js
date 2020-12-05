@@ -43,26 +43,28 @@ app.get('/files/download/:fname', function(req,res){
     res.download(__dirname + '/public/fileStore/' + req.params.fname)      
 })
 
-app.post('/files', upload.single('myFile'), function(req,res){
-    let oldPath = __dirname + '/' + req.file.path
-    let newPath = __dirname + '/public/fileStore/' + req.file.originalname
-
-    fs.rename(oldPath,newPath, function(err){
-        if(err) throw err
-    })
-    
-    var d = new Date().toISOString().substr(0,16)
+app.post('/files', upload.array('myFile'), function(req,res){
     var files = jsonFile.readFileSync('./dbFiles.json')
-    files.push(
-        {
-            date: d,
-            name: req.file.originalname,
-            size: req.file.size,
-            mimetype: req.file.mimetype,
-            desc: req.body.desc
-        }
-    )
+    var d = new Date().toISOString().substr(0,16)
 
+    for(var i = 0; i < req.files.length; i++){
+        let oldPath = __dirname + '/' + req.files[i].path
+        let newPath = __dirname + '/public/fileStore/' + req.files[i].originalname
+    
+        fs.rename(oldPath,newPath, function(err){
+            if(err) throw err
+        })
+        
+        files.push(
+            {
+                date: d,
+                name: req.files[i].originalname,
+                size: req.files[i].size,
+                mimetype: req.files[i].mimetype,
+                desc: req.body.desc
+            }
+        )
+    }
     jsonFile.writeFileSync('./dbFiles.json', files)
     res.redirect('/')
 })
