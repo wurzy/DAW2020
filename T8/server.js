@@ -67,4 +67,4 @@ app.post('/files', upload.single('myFile'), function(req,res){
     res.redirect('/')
 })
 
-app.listen(7702, () => console.log('Servidor a escuta porta 7700...'))
+app.listen(7700, () => console.log('Servidor a escuta porta 7700...'))
